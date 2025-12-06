@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>NEON HEARTS | HOMO TECHNO</title>
+	<style>
+		/* RESET & BASE */
+		* { margin: 0; padding: 0; box-sizing: border-box; }
+		body {
+			background-color: #050505;
+			color: #e0e0e0;
+			font-family: 'Courier New', Courier, monospace;
+			overflow-x: hidden;
+		}
+
+		/* VARS */
+		:root {
+			--neon-pink: #ff00ff;
+			--neon-blue: #00ffff;
+			--void: #0a0a0a;
+			--glass: rgba(255, 255, 255, 0.05);
+		}
+
+		/* TYPOGRAPHY */
+		h1, h2, h3 {
+			text-transform: uppercase;
+			letter-spacing: -2px;
+			font-weight: 900;
+			font-family: sans-serif;
+		}
+		
+		h1 {
+			display: none;
+		}
+
+		/* ANIMATIONS */
+		@keyframes flicker {
+			0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink); }
+			20%, 24%, 55% { opacity: 0.5; text-shadow: none; }
+		}
+
+		/* CRT OVERLAY */
+		.scanlines {
+			position: fixed;
+			top: 0; left: 0; width: 100%; height: 100%;
+			background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
+			background-size: 100% 4px;
+			pointer-events: none;
+			z-index: 999;
+		}
+
+		/* HERO SECTION */
+		.hero {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			/* Use the new stage image as the hero background */
+			background: linear-gradient(rgba(5, 5, 5, 0.7), rgba(5, 5, 5, 0.7)), url('image_7.png');
+			background-size: cover;
+			background-position: center;
+			text-align: center;
+			padding: 2rem;
+			border-bottom: 2px solid var(--neon-pink);
+		}
+
+		.hero-logo {
+			max-width: 600px;
+			width: 100%;
+			height: auto;
+			/* Add a subtle glow to the logo image */
+			filter: drop-shadow(0 0 20px var(--neon-pink));
+			margin-bottom: 2rem;
+		}
+
+		.hero h1 {
+			font-size: clamp(3rem, 10vw, 8rem);
+			line-height: 0.9;
+			color: white;
+			animation: flicker 4s infinite;
+		}
+
+		.cta-button {
+			margin-top: 3rem;
+			padding: 1.5rem 3rem;
+			background: transparent;
+			border: 2px solid var(--neon-pink);
+			color: var(--neon-pink);
+			font-family: 'Courier New', monospace;
+			font-weight: bold;
+			font-size: 1.2rem;
+			cursor: pointer;
+			transition: 0.3s;
+			text-transform: uppercase;
+			box-shadow: 0 0 15px var(--neon-pink);
+		}
+
+		.cta-button:hover {
+			background: var(--neon-pink);
+			color: black;
+			box-shadow: 0 0 30px var(--neon-pink);
+		}
+
+		/* ALBUM GRID & BAND SECTION */
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 5rem 2rem;
+		}
+
+		.section-title {
+			font-size: 3rem;
+			margin-bottom: 3rem;
+			border-left: 10px solid var(--neon-blue);
+			padding-left: 20px;
+		}
+
+		.tracklist {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 2rem;
+		}
+
+		.track-card {
+			background: var(--glass);
+			border: 1px solid #333;
+			padding: 2rem;
+			transition: 0.3s;
+		}
+
+		.track-card:hover {
+			border-color: var(--neon-blue);
+			transform: translateY(-5px);
+		}
+
+		.track-number { color: var(--neon-pink); font-size: 1.5rem; display: block; margin-bottom: 10px;}
+		.track-title { font-size: 1.5rem; font-weight: bold; color: white; }
+
+		.band-section {
+			display: flex;
+			align-items: center;
+			gap: 4rem;
+			margin-top: 5rem;
+		}
+		
+		.band-image {
+			width: 100%;
+			max-width: 600px;
+			border: 2px solid var(--neon-blue);
+			box-shadow: 0 0 20px var(--neon-blue);
+		}
+
+		.band-info {
+			flex: 1;
+		}
+
+		.band-info h3 {
+			color: var(--neon-blue);
+			margin-bottom: 1rem;
+		}
+
+		/* FOOTER */
+		footer {
+			text-align: center;
+			padding: 3rem;
+			border-top: 1px solid #333;
+			font-size: 0.8rem;
+			opacity: 0.6;
+		}
+
+		@media (max-width: 768px) {
+			.band-section {
+				flex-direction: column;
+			}
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="scanlines"></div>
+
+	<section class="hero">
+		<img src="neon-hearts-logo.png" alt="Neon Hearts Logo" class="hero-logo">
+		<h1>HOMO<br>TECHNO</h1>
+		<p style="margin-top: 20px; max-width: 600px; font-size: 1.2rem;">THE EVOLUTION IS SYNTHETIC. THE NEW ALBUM OUT NOW.</p>
+		<button class="cta-button">LISTEN NOW</button>
+	</section>
+
+	<section class="container">
+		<h3 class="section-title">SYSTEM DATA // TRACKLIST</h3>
+		
+		<div class="tracklist">
+			<div class="track-card">
+				<span class="track-number">01</span>
+				<span class="track-title">CONCRETE PULSE</span>
+				<p>Initializing system boot...</p>
+			</div>
+			<div class="track-card">
+				<span class="track-number">02</span>
+				<span class="track-title">DIGITAL GHOSTS</span>
+				<p>Lost in the machine...</p>
+			</div>
+			<div class="track-card">
+				<span class="track-number">03</span>
+				<span class="track-title">SYNTHETIC LOVE</span>
+				<p>Romance is obsolete...</p>
+			</div>
+			 <div class="track-card">
+				<span class="track-number">04</span>
+				<span class="track-title">WIRED VEINS</span>
+				<p>Electricity is the new blood...</p>
+			</div>
+		</div>
+
+		<div class="band-section">
+			<img src="image_6.png" alt="Neon Hearts Band Photo" class="band-image">
+			<div class="band-info">
+				<h3 class="section-title" style="border: none; padding: 0; margin-bottom: 1rem;">THE ARCHITECTS</h3>
+				<p>Viktor Kane. Julian "Roxy" Valentine. Martin Ssempa.</p>
+				<br>
+				<p>Forged in the underground, Neon Hearts brings the sound of the future to the present. "Homo Techno" is not just an album; it's a manifesto for the digital age.</p>
+			</div>
+		</div>
+
+	</section>
+
+	<section class="container" style="text-align: center; padding-top: 0;">
+		<h3 class="section-title" style="border:none; text-align: center;">PHYSICAL UPGRADES</h3>
+		<div style="border: 2px solid white; padding: 40px; display: inline-block; background: var(--glass);">
+			<h2>LIMITED EDITION VINYL</h2>
+			<p>180g "Oil Slick" Black Vinyl.</p>
+			<br>
+			<button class="cta-button" style="border-color: var(--neon-blue); color: var(--neon-blue); box-shadow: 0 0 15px var(--neon-blue);">ORDER $30.00</button>
+		</div>
+	</section>
+
+	<footer>
+		<p>&copy; 2025 NEON HEARTS. ALL RIGHTS RESERVED.</p>
+		<p>DESIGNED FOR THE DYSTOPIAN FUTURE.</p>
+	</footer>
+
+</body>
+</html>
